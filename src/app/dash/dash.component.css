@@ -1,0 +1,14 @@
+.foto {
+    width: 100%;
+    height: 280px;
+    border: dashed 1px gray;
+    cursor: pointer;
+    transition: ease  all 0.5s;
+    background-size: 100% 100%;
+}
+    .foto:hover {
+        transition: ease  all 0.5s;
+        border: solid 1.5px yellowgreen;
+        border-radius: 5px;
+    }
+        
