@@ -54,13 +54,15 @@ import {MatTooltipModule} from '@angular/material/tooltip';
 import {MatTreeModule} from '@angular/material/tree';
 import {OverlayModule} from '@angular/cdk/overlay';
 import { HashLocationStrategy, LocationStrategy } from '@angular/common';
+import { HeaderNavComponent } from './header-nav/header-nav.component';
 //#endregion
 
 @NgModule({
   declarations: [
     AppComponent,
     DashComponent,
-    VisorComponent
+    VisorComponent,
+    HeaderNavComponent
   ],
   imports: [
 

@@ -33,8 +33,8 @@ export class ControlworksService {
   //#endregion
 
   //#region TRABAJDORES CONTROL
-  getTrabajadores() {
-    return this.http.get( this.apiURL + '/workers/getTrabajadores/' );
+  getTrabajadores(param, email, codectrab, filter) {
+    return this.http.get( this.apiURL + '/workers/getTrabajadores/' + param + '/' + email + '/' + codectrab + '/' + filter );
   }
 
   postTrabajadores(post) {

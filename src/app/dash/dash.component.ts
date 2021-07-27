@@ -19,11 +19,17 @@ export class DashComponent implements OnInit {
   public Trab_codecs;
   public TrabObserver;
   public Trab_Cargo;
+  public Trab_cel;
+  public Trab_dir;
+
+  //GET HTTP REQUEST MODEL
+  public arrTrab: any = [];
 
   constructor( private cGen: CodecGenerateService,
                private controlworks: ControlworksService ) { }
 
   ngOnInit() {
+    this.getTrabaj('GE', 'a', '0' , 'a');
   }
 
   genCodec() {
@@ -90,7 +96,9 @@ export class DashComponent implements OnInit {
       codec_trabajos:'',
       userpass: this.Trab_pass,
       codec_worker: this.Trab_codecs,
-      cargo : this.Trab_Cargo
+      cargo : this.Trab_Cargo,
+      celular: this.Trab_cel,
+      direccion: this.Trab_dir
     }
 
     console.log(this.arrWorkers);
@@ -102,6 +110,7 @@ export class DashComponent implements OnInit {
         this.upload = trab.loaded / 1000000;
         this.uploadTotal = trab.total / 1000000; //total bytes to upload
         this.porcentUploadTotal = (this.upload / this.uploadTotal) * 100;
+        console.log(this.upload);
         console.log(this.porcentUploadTotal);
 
       }
@@ -112,10 +121,8 @@ export class DashComponent implements OnInit {
           title: 'Bien..!',
           text: 'Trabajador creado con éxito'
         })
-
-        this.controlworks.getTrabajadores().subscribe( y => {
-          console.log(y);
-        })
+        //PETICION GET PARA REFRESCAR TRABAJDORES
+        this.getTrabaj('GE', 'a', '0' , 'a');
 
       }
 
@@ -132,6 +139,13 @@ export class DashComponent implements OnInit {
     // console.log(this.arrWorkers);
 
 
+ }
+
+ getTrabaj(par, email, codec , filter) {   
+  this.controlworks.getTrabajadores(par, email, codec , filter).subscribe( y => {
+    this.arrTrab = y;
+    console.log(this.arrTrab);
+  })
  }
 
 }

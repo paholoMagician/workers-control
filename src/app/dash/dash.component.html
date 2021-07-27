@@ -60,6 +60,14 @@
                 <input type="text" class="form-control" [(ngModel)]="Trab_pass" name="Trab_pass" id="pass" placeholder="******">
             </div>
             <div>
+                <label for="Trab_cel"><strong>Contácto:</strong></label>
+                <input type="text" class="form-control" [(ngModel)]="Trab_cel" name="Trab_cel" id="Trab_cel" placeholder="0987654321">
+            </div>
+            <div>
+                <label for="Trab_dir"><strong>Dirección:</strong></label>
+                <input type="text" class="form-control" [(ngModel)]="Trab_dir" name="Trab_dir" id="Trab_dir" placeholder="calle 6ta">
+            </div>
+            <div>
                 <label for="des"><strong>Código Trabajador:</strong></label>
                 <div class="d-flex flex-row">
                     <input type="text" disabled class="form-control" id="des" name="Trab_codecs" [(ngModel)]="Trab_codecs" placeholder="0000000000CODEC">
@@ -83,15 +91,29 @@
         </div>
     </div>
 
-    <div>
-        <div class="card" style="width: 18rem;">
-            <img src="..." class="card-img-top" alt="...">
+    <div class="container p-3 m-3 d-flex justify-content-between">
+        <div class="card p-3" style="width: 20rem;" *ngFor="let x of arrTrab">
+            <div class="d-flex justify-content-center">
+                <div class="imgGropuTrab" [ngStyle]="{'background-image': 'url(&quot;' + x.foto_worker + '&quot;)'}"></div>
+            </div>
             <div class="card-body">
-                <h5 class="card-title">Card title</h5>
-                <p class="card-text">
-                    Some quick example text to build on the card title and make up the bulk of the card's content.
-                </p>
-                <a href="#" class="btn btn-primary"></a>
+                <h5 class="card-title">Nombres: <br> {{x.nombres}} </h5>    
+                <ul class="lsit-group p-0 m-0">
+                    <li class="list-group-item list-group-item-dark d-flex align-items-start fs-6"> 
+                        <mat-icon class="fs-4">email</mat-icon> {{x.user_mail}} 
+                    </li>
+                    <li class="list-group-item list-group-item-dark d-flex align-items-start fs-6"> 
+                        <mat-icon class="fs-4">home</mat-icon> {{x.direccion}} 
+                    </li>
+                    <li class="list-group-item list-group-item-dark d-flex align-items-start fs-6"> 
+                        <mat-icon class="fs-4">phone</mat-icon> {{x.celular}} 
+                    </li>
+                    <li class="list-group-item list-group-item-success">
+                        <mat-icon class="fs-4">security</mat-icon> Token trabajador: <br>
+                         <span class="note"> {{x.codec_worker}} </span>
+                    </li>
+                </ul>            
+                <!-- <a href="#" class="btn btn-primary"></a> -->
             </div>
         </div>
     </div>
