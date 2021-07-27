@@ -53,6 +53,7 @@ import {MatToolbarModule} from '@angular/material/toolbar';
 import {MatTooltipModule} from '@angular/material/tooltip';
 import {MatTreeModule} from '@angular/material/tree';
 import {OverlayModule} from '@angular/cdk/overlay';
+import { HashLocationStrategy, LocationStrategy } from '@angular/common';
 //#endregion
 
 @NgModule({
@@ -60,10 +61,10 @@ import {OverlayModule} from '@angular/cdk/overlay';
     AppComponent,
     DashComponent,
     VisorComponent
-  ],  
+  ],
   imports: [
 
-    //#region 
+    //#region
     CdkStepperModule,
     CdkTableModule,
     CdkTreeModule,
@@ -115,13 +116,13 @@ import {OverlayModule} from '@angular/cdk/overlay';
     ReactiveFormsModule,
     RouterModule.forRoot([
       { path: 'visor', component: VisorComponent },
-      { path: 'dash', component: DashComponent, pathMatch: 'full' },
+      { path: 'dash', component: DashComponent },
       { path: '**',   pathMatch: 'full', redirectTo: 'dash' }
     ]),
     BrowserAnimationsModule,
   ],
 
-  providers: [],
+  providers: [{ provide: LocationStrategy, useClass: HashLocationStrategy }],
   bootstrap: [AppComponent]
 
 })

@@ -8,46 +8,46 @@ import { Injectable } from '@angular/core';
 export class ControlworksService {
 
   // MODO DESARROLLO
-  private apiURL = 'http://localhost:5000/api';  
-  
-  
+  private apiURL = 'http://localhost:5000/api';
+
+
   constructor(private http: HttpClient) { }
 
 
   //#region  TRABAJOS CONTROL
-  getTrabajo(opt) {
-    return this.http.get( this.apiURL + '/trabajos/gettrabajo/' + opt );
-  }  
+  // getTrabajo(opt) {
+  //   return this.http.get( this.apiURL + '/trabajos/gettrabajo/' + opt );
+  // }
 
-  postTrabajo(post) {
-    return this.http.post( this.apiURL + '/trabajos/trabajossave/', post );
-  }
+  // postTrabajo(post) {
+  //   return this.http.post( this.apiURL + '/trabajos/trabajossave/', post );
+  // }
 
-  updateTrabajo(id, update) {
-    return this.http.post( this.apiURL + '/trabajos/trabajosput/' + id, update );
-  }
+  // updateTrabajo(id, update) {
+  //   return this.http.post( this.apiURL + '/trabajos/trabajosput/' + id, update );
+  // }
 
-  deleteTrabajo(optdel) {
-    return this.http.get( this.apiURL + '/trabajos/delTrabajo/' + optdel );
-  }
+  // deleteTrabajo(optdel) {
+  //   return this.http.get( this.apiURL + '/trabajos/delTrabajo/' + optdel );
+  // }
   //#endregion
 
   //#region TRABAJDORES CONTROL
-  getTrabajadores(opt) {
-    return this.http.get( this.apiURL + '/workers/getWorkers/' + opt );
+  getTrabajadores() {
+    return this.http.get( this.apiURL + '/workers/getTrabajadores/' );
   }
 
   postTrabajadores(post) {
-    return this.http.post( this.apiURL + '/workers/save_worker/', post );
+    return this.http.post( this.apiURL + '/workers/save_worker', post, {observe: 'events', reportProgress: true} );
   }
 
-  updateTrabajadores(id, upd) {
-    return this.http.put( this.apiURL + '/workers/puttransprod/' + id , upd );
-  }
+  // updateTrabajadores(id, upd) {
+  //   return this.http.put( this.apiURL + '/workers/puttransprod/' + id , upd );
+  // }
 
-  deleteTrabajadores(opt) {
-    return this.http.get( this.apiURL + '/workers/delWorkers/' + opt );
-  }
+  // deleteTrabajadores(opt) {
+  //   return this.http.get( this.apiURL + '/workers/delWorkers/' + opt );
+  // }
 
   //#endregion
 

@@ -1,23 +1,20 @@
 <div class="dm" style="float: right;">
 
-    <button class="btn btn-outline-secondary" type="button" 
-            data-bs-toggle="offcanvas"
-            data-bs-target="#offcanvasRight"
-            aria-controls="offcanvasRight" style="border-radius: 0px; border-bottom-left-radius: 5px;">
+    <button class="btn btn-outline-secondary" type="button" data-bs-toggle="offcanvas" data-bs-target="#offcanvasRight" aria-controls="offcanvasRight" style="border-radius: 0px; border-bottom-left-radius: 5px;">
             <mat-icon>more_vert</mat-icon>
     </button>
 
 </div>
 
 <div class="container-fluid">
-    
+
     <div class="offcanvas offcanvas-end" tabindex="-1" id="offcanvasRight" aria-labelledby="offcanvasRightLabel">
         <div class="offcanvas-header d-flex align-items-center flex-row">
-          <mat-icon>person_add</mat-icon>
-            <h5 id="offcanvasRightLabel" >
+            <mat-icon>person_add</mat-icon>
+            <h5 id="offcanvasRightLabel">
                 <strong> Agregar Trabajador:</strong>
             </h5>
-          <button type="button" class="btn-close text-reset" data-bs-dismiss="offcanvas" aria-label="Close"></button>
+            <button type="button" class="btn-close text-reset" data-bs-dismiss="offcanvas" aria-label="Close"></button>
         </div>
 
         <div class="offcanvas-body">
@@ -25,19 +22,19 @@
                 <label for="_nombres">
                    <strong> Nombres de Trabajador </strong><span class="note"> Añadir nombres y apellidos </span>
                 </label>
-                <input type="text" class="form-control" [(ngModel)]="_nombres" id="_nombres" placeholder="Oscar Gutierrez....">
+                <input type="text" class="form-control" [(ngModel)]="_nombres" id="_nombres" name="_nombres" placeholder="Oscar Gutierrez....">
             </div>
             <div>
                 <label for="Trab_Cargo">
                    <strong> Cargo </strong><span class="note"> Cargo o función que desempeña el trabajador </span>
                 </label>
-                <input type="text" class="form-control" [(ngModel)]="Trab_Cargo" id="Trab_Cargo" placeholder="Sistemas">
+                <input type="text" class="form-control" [(ngModel)]="Trab_Cargo" name="Trab_Cargo" id="Trab_Cargo" placeholder="Sistemas">
             </div>
             <div>
                 <label for="email">
                     <strong> Email Trabajador </strong>
                 </label>
-                <input type="text" class="form-control" id="email" [(ngModel)]="_user_email" placeholder="...@mail.com...">
+                <input type="email" class="form-control" id="email" [(ngModel)]="usermail" name="usermail" placeholder="...@mail.com...">
             </div>
 
             <div>
@@ -45,41 +42,33 @@
                     <div class="foto" id="imgTest" (change)="encodeImageFileAsURL();"
                          [(ngModel)]="_IMGE" name="_IMGE" [ngStyle]="{'background-image': 'url(&quot;' + _IMGE + '&quot;)'}">
                          <input class="form-control form-control-sm" type="file" id="fileUp">
-                    </div>                    
-                </label>                
+                    </div>
+                </label>
             </div>
 
             <div>
                 <label for="fechInit"><strong>Fecha Ingreso:</strong></label>
-                <input type="date" class="form-control"
-                       id="fechInit" 
-                       [(ngModel)]="_fecha_init">
+                <input type="date" class="form-control" id="fechInit" [(ngModel)]="fechInit" name="fechInit">
             </div>
-<!-- 
+            <!--
             <div>
                 <label for="des"><strong>Estado del trabajador:</strong></label>
                 <input type="text" class="form-control" id="des" [(ngModel)]="Trab_estate" placeholder="Estado del trabajador">
             </div> -->
             <div>
                 <label for="pass"><strong>Password:</strong></label>
-                <input type="text" class="form-control"
-                       id="pass"
-                       placeholder = "******">
+                <input type="text" class="form-control" [(ngModel)]="Trab_pass" name="Trab_pass" id="pass" placeholder="******">
             </div>
             <div>
                 <label for="des"><strong>Código Trabajador:</strong></label>
                 <div class="d-flex flex-row">
-                    <input type="text"
-                           disabled
-                           class="form-control" id="des" 
-                           [(ngModel)]="Trab_codecs"
-                           placeholder="0000000000CODEC">
-                    <button class="btn btn-warning" (click)="genCodec()" >
+                    <input type="text" disabled class="form-control" id="des" name="Trab_codecs" [(ngModel)]="Trab_codecs" placeholder="0000000000CODEC">
+                    <button class="btn btn-warning" (click)="genCodec()">
                         <mat-icon>vpn_key</mat-icon>
                     </button>
                 </div>
             </div>
-            
+
             <!-- <div>
                 <label for="observer"><strong>Observación:</strong></label>
                 <textarea type="text"
@@ -88,26 +77,23 @@
                           [(ngModel)]="TrabObserver">
                 </textarea>
             </div> -->
-            <div class="btn btn-success d-flex align-items-end mt-3"
-                 (click)="saveWorkers()">
+            <div class="btn btn-success d-flex align-items-end mt-3" (click)="saveWorkers()">
                 <mat-icon style="margin-right: 10px;">group_add</mat-icon> Añadir trabajador
             </div>
-        </div>        
-      </div>
+        </div>
+    </div>
 
-      <div>
+    <div>
         <div class="card" style="width: 18rem;">
             <img src="..." class="card-img-top" alt="...">
             <div class="card-body">
-              <h5 class="card-title">Card title</h5>
-              <p class="card-text">
-                 Some quick example text to build on the card                                   
-                 title and make up the bulk of the card's content.
-              </p>
-              <a href="#" class="btn btn-primary"></a>
+                <h5 class="card-title">Card title</h5>
+                <p class="card-text">
+                    Some quick example text to build on the card title and make up the bulk of the card's content.
+                </p>
+                <a href="#" class="btn btn-primary"></a>
             </div>
         </div>
-      </div>
+    </div>
 
 </div>
-
