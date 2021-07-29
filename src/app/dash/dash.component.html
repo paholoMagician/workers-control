@@ -1,3 +1,124 @@
+<!-- Modal -->
+<div class="modal fade" id="workers-maintenance" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+    <div class="modal-dialog">
+      <div class="modal-content" *ngFor="let j of arrTrab" >
+        <div class="modal-header">
+          <div class="picture" [ngStyle]="{'background-image': 'url(&quot;' + j.foto_worker + '&quot;)'}"></div>            
+          <h5 class="modal-title d-flex align-items-end" id="exampleModalLabel"> &nbsp;&nbsp; {{j.nombres}} </h5>
+          <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"  (click)="getTrabaj('GE', 'a', '0', 'a')"></button>
+        </div>
+        <div class="modal-body">
+          <div class="container-fluid">
+                      
+            <div class="w-100" >
+                <div class="d-flex flex-column">                    
+                    <div>
+                        <label for="email">
+                            <strong> Email Trabajador </strong>
+                        </label>
+                        <input type="email" class="form-control"
+                               id="email" [(ngModel)]="usermail"
+                               name="usermail" value="{{j.user_mail}}">
+                    </div>                    
+                    <div class="d-flex justify-content-between w-100 flex-wrap" >
+                        <div>
+                            <label for="_nombres">
+                                <strong> Nombres de Trabajador </strong>
+                            </label>
+                            <input type="text" class="form-control"
+                                   [(ngModel)]="_nombres" id="_nombres"
+                                   name="_nombres" value="{{j.nombres}}">
+                        </div>
+                        <div>
+                            <label for="Trab_Cargo">
+                               <strong> Cargo </strong>
+                            </label>
+                            <input type="text" class="form-control"
+                                   [(ngModel)]="Trab_Cargo" name="Trab_Cargo"
+                                   id="Trab_Cargo" value="{{j.cargo}}">
+                        </div>
+                        <div>
+                            <label for="Trab_estate">
+                               <strong> Estado </strong>
+                            </label>
+                            <input type="text" class="form-control"
+                                   [(ngModel)]="Trab_estate" name="Trab_estate"
+                                   id="Trab_estate" value="{{j.estado}}">
+                        </div>
+                    </div>
+                    <div>
+                        <label for="fileUp" id="lb">
+                            <strong> Foto </strong>
+                            <div class="foto" id="imgTest"
+                                 (change)="encodeImageFileAsURL();"
+                                 [(ngModel)]="_IMGE" name="_IMGE"
+                                 [ngStyle]="{'background-image': 'url(&quot;' + _IMGE + '&quot;)'}">
+                                 <input class="form-control form-control-sm" type="file" id="fileUp">
+                            </div>
+                        </label>
+                    </div>
+                    <div class="d-flex justify-content-between w-100 flex-wrap ">
+                        <div>
+                            <label for="fechInit"><strong>Fecha Ingreso:</strong></label>
+                            <input type="date" class="form-control"
+                                   id="fechInit" [(ngModel)]="fechInit" 
+                                   value="{{j.fecha_ing}}"
+                                   name="fechInit">
+                        </div>
+                        <div>
+                            <label for="pass"><strong>Password:</strong></label>
+                            <input type="text" class="form-control"
+                                   [(ngModel)]="Trab_pass" name="Trab_pass"
+                                   id="pass" value="{{j.userpass}}">
+                        </div>
+                        <div>
+                            <label for="Trab_cel"><strong>Contácto:</strong></label>
+                            <input type="text" class="form-control" 
+                                   [(ngModel)]="Trab_cel" name="Trab_cel"
+                                   id="Trab_cel" value="{{j.celular}}">
+                        </div>
+                    </div>
+                    <div>
+                        <label for="Trab_dir"><strong>Dirección:</strong></label>
+                        <input type="text" class="form-control"
+                               [(ngModel)]="Trab_dir" name="Trab_dir"
+                               id="Trab_dir"
+                               value="{{j.direccion}}">
+                    </div>
+                    <div>
+                        <label for="des"><strong>Código Trabajador:</strong></label>
+                        <div class="d-flex flex-row">
+                            <input type="text" disabled
+                                   class="form-control"
+                                   id="des" name="Trab_codecs"
+                                   [(ngModel)]="Trab_codecs"
+                                   value="{{j.codec_worker}}" >
+                        </div>
+                    </div>
+                </div>                
+                
+            </div>
+                       
+          </div>
+        </div>
+        <div class="modal-footer">
+          
+          <button type="button" class="btn btn-secondary"
+                  data-bs-dismiss="modal"
+                  (click)="getTrabaj('GE', 'a', '0', 'a')">
+                  Close
+          </button>
+          <button type="button" class="btn btn-primary d-flex align-items-end" (click)="updateWorkers()" >
+               <mat-icon>mode_edit</mat-icon> Actualizar Trabajador
+          </button>
+
+        </div>
+      </div>
+    </div>
+  </div>
+
+
+
 <div class="dm" style="float: right;">
 
     <button class="btn btn-outline-secondary" type="button" data-bs-toggle="offcanvas" data-bs-target="#offcanvasRight" aria-controls="offcanvasRight" style="border-radius: 0px; border-bottom-left-radius: 5px;">
@@ -85,19 +206,20 @@
                           [(ngModel)]="TrabObserver">
                 </textarea>
             </div> -->
+
             <div class="btn btn-success d-flex align-items-end mt-3" (click)="saveWorkers()">
                 <mat-icon style="margin-right: 10px;">group_add</mat-icon> Añadir trabajador
             </div>
         </div>
     </div>
 
-    <div class="container p-3 m-3 d-flex justify-content-between">
-        <div class="card p-3" style="width: 20rem;" *ngFor="let x of arrTrab">
+    <div class="container p-3 d-flex justify-content-between flex-wrap">
+        <div class="card p-3 mt-4" style="width: 20rem;" *ngFor="let x of arrTrab" (click)="getTrabaj('IN', x.user_mail, x.codec_worker, 'a')" data-bs-toggle="modal" data-bs-target="#workers-maintenance" >
             <div class="d-flex justify-content-center">
                 <div class="imgGropuTrab" [ngStyle]="{'background-image': 'url(&quot;' + x.foto_worker + '&quot;)'}"></div>
             </div>
             <div class="card-body">
-                <h5 class="card-title">Nombres: <br> {{x.nombres}} </h5>    
+                <h5 class="card-title">Nombres: <br> <span class="text-warning"> {{x.nombres}}</span> </h5>    
                 <ul class="lsit-group p-0 m-0">
                     <li class="list-group-item list-group-item-dark d-flex align-items-start fs-6"> 
                         <mat-icon class="fs-4">email</mat-icon> {{x.user_mail}} 

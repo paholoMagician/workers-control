@@ -41,9 +41,9 @@ export class ControlworksService {
     return this.http.post( this.apiURL + '/workers/save_worker', post, {observe: 'events', reportProgress: true} );
   }
 
-  // updateTrabajadores(id, upd) {
-  //   return this.http.put( this.apiURL + '/workers/puttransprod/' + id , upd );
-  // }
+  updateTrabajadores(pkA, pkB, model) {
+    return this.http.put(this.apiURL + '/workers/update_worker/' + pkA + '/' + pkB, model, {observe: 'events', reportProgress: true});
+  }
 
   // deleteTrabajadores(opt) {
   //   return this.http.get( this.apiURL + '/workers/delWorkers/' + opt );

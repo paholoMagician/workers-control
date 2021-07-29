@@ -13,6 +13,23 @@
         border-radius: 5px;
     }
 
+.picture{
+    width: 55px;
+    height: 55px;
+    border: dashed 1px gray;
+    cursor: pointer;
+    background-size: 100%;
+    transition: ease  all 0.5s;
+    border-radius: 100%;
+    transition: ease all 0.5s;
+}
+
+.picture:hover {
+    transition: ease all 0.5s;
+    box-shadow: 5px 5px 10px rgba(22, 44, 65, 0.6);
+    cursor: pointer;
+}
+
 
 .imgGropuTrab {
     width: 150px;
